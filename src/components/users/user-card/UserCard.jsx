@@ -1,5 +1,5 @@
-import { Card, Button } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import { Card } from "react-bootstrap";
+import {Link} from "react-router-dom";
 
 const cardStyle = {
     margin:'1.5rem'
@@ -7,6 +7,9 @@ const cardStyle = {
 
 export function UserCard( {user} )
 {
+    if (!user) {
+        return <h2>No User!</h2>
+    }
     return(
         <div className="User-card-wrapper" style={cardStyle}>
             <Card style={{ width: '18rem' }}>
@@ -24,7 +27,7 @@ export function UserCard( {user} )
                    <strong>Active: </strong><span>{user.isActive.toString()}</span>
                 </div>
                 </Card.Text>
-                <Link to={'/users/' + user.id}>View profile</Link>     
+                <Link to={'/users/' + user.id}>View profile</Link>
             </Card.Body>
     </Card>
         </div>
